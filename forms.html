@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Forms</title>
+		
+<style>
+fieldset {
+  overflow: hidden;
+  width: 50%;
+}
+
+label {
+  float: left;
+  padding-right: 10px;
+  width: 100px;
+  clear: both;
+}
+
+input, select {
+  float: none;
+}
+</style>
+	</head>
+	<body>
+	
+	<form name="myform" method="post" action="test.html">
+	<fieldset>
+	<legend>My Form</legend>  
+	<div class="form-group">
+	<p>First Name: <input type="text" name="firstname" /> 	Last Name: <input type="text" name="firstname" /></p>
+
+	<p>Email: <input type="text" name="email" />(Required)</p>
+	</div>
+	<div class="form-group">
+	<p>Are you:<br />
+		<input type="radio" name="gender" value="male" id="male" /> Male <br/>
+		<input type="radio" name="gender" value="female" id="female" /> Female </p>
+	</div>
+	<div class="form-group">
+	<p>Which methods of transportation do you use?</p>
+	<p><input type="checkbox" name="vehicle" value="Bike" /> Bike<br />
+	<input type="checkbox" name="vehicle" value="Car" /> Car<br />
+	<input type="checkbox" name="vehicle" value="Bus" /> Bus<br />
+	<input type="checkbox" name="vehicle" value="Train" />Train</p>
+</div>
+<div class="form-group">
+	<p>What type of car do you own?</p>
+	<select name="car" class="form-control">
+		<option value="ford">Ford</option>
+		<option value="volvo">Volvo</option>
+		<option value="saab">Saab</option>
+		<option value="hyundai">Hyundai</option>
+		<option value="mercedes">Mercedes</option>
+		<option value="audi">Audi</option>
+	</select>
+	</div>
+	
+	<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+	</fieldset>
+	</form>
+	
+
+	</body>
+</html>

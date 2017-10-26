@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+ <title>Pie with Dropdown and JSON</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+<style>
+    .chart {
+    width: 100%;
+    }
+    
+    #piechart {
+    height: 600px;
+    }
+     
+</style>
+</head>
+<body>
+ 
+  <form  action="#" id="form1" name="form1" onchange="drawChart()" >
+     
+     <select id="thedropdown">
+     <option value="genre">Genre</option>
+     <option value="renewed">Renewed</option>
+     </select>
+    
+  </form>
+  <div class="chart">
+    <div id="piechart"></div>
+ </div> 
+   <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+     
+    function drawChart() {
+     netflixdrop = document.getElementById("thedropdown").value; 
+     
+     info = [{netflix: "genre", animation: 33, comedy: 25, docu: 14, drama: 18, live: 3, foreign: 8, marvel: 4, reality: 2, talk: 2},
+     {netflix: "genre", animation: 7, comedy: 12, docu: 2, drama: 9, live: 1, foreign: 5, marvel: 3, reality: 1, talk: 1}
+     ];
+      
+    
+    for(i=0; i<info.length; i++) { 
+    if(netflixdrop == info[i].netflix) {
+       animation = info[i].animation;
+       comedy = info[i].comedy;
+       docu = info[i].docu;
+       drama = info[i].drama;
+       live = info[i].live;
+       foreign = info[i].foreign;
+       marvel = info[i].marvel;
+       reality = info[i].reality;
+       talk = info[i].talk;
+    }// end if
+    } // end for
+    
+    var data = google.visualization.arrayToDataTable([
+          ['Task', 'Amount'],
+          ['Animation',     animation],
+          ['Comedy',      comedy],
+          ['Documentary',  docu],
+          ['Drama', drama],
+          ['Live',    live],
+          ['Foreign',    foreign],
+          ['Marvel',    marvel],
+          ['Reality',    reality],
+          ['Talk',    talk]
+        ]);
+        var options = {
+          title: 'Weekly Activities'
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);       
+      } 
+          
+    </script>  
+</body>
+</html>

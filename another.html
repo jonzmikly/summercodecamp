@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Random Things</title>
+</head>
+<body>
+<form  id="form1">
+
+<p>First Name: <input type="text" id="firstname" /></p>
+
+<p>Last Name: <input type="text" id="lastname" /></p>
+
+
+<p>Zip Code?</p>
+<select id="zip">
+ <option value="0">Choose a Zipcode:</option>
+ <option value="78751">78701</option>
+ <option value="78702">78702</option>
+ <option value="78751">78751</option>
+ <option value="999">Other</option>
+</select>
+  
+<p>How many tacos do you want?</p>
+<label for="taco_0"><input type="radio" name="tacos" value="0" />0</label>
+<label for="taco_1"><input type="radio" name="tacos" value="1" />1</label>
+<label for="taco_2"><input type="radio" name="tacos" value="2" />2</label>
+<label for="taco_3"><input type="radio" name="tacos" value="3" />3</label>
+<label for="taco_4"><input type="radio" name="tacos" value="4" />4</label>
+
+
+<button type="submit" value="Submit">Submit</button>
+</form>
+
+<p>Welcome<span id="greeting"></span></p>
+<p>Your Zip is: <span id="zipcode"></span></p>
+<p>Taco order: <span id="taconum"></span></p>
+<p>Taco subtotal <span id="tacosubtotal"></span></p>
+<p>Tax on Tacos: <span id="tax"><span></p>
+<p>Total for Tacos: <span id="tacototal"><span></p>
+
+<script>
+//this is the generic function that submits the form. Name of form above must be the same as id below
+document.getElementById("form1").onsubmit=function() {
+
+//code the answers here
+first = document.getElementById("firstname").value;
+last = document.getElementById("lastname").value;
+
+document.getElementById("greeting").innerHTML = ", " + first + " " + last + "!";
+
+myzip = document.getElementById("zip").value;
+
+if (myzip == 0) {
+alert("Pick A Zip!");
+}
+else if (myzip == 999) {
+alert("Out of area");
+}
+else {
+document.getElementById("zipcode").innerHTML = myzip;
+
+mytaco = document.querySelector('input[name = "tacos"]:checked').value;
+document.getElementById("taconum").innerHTML = mytaco;
+
+subtotal = mytaco * 2.49;
+document.getElementById("tacosubtotal").innerHTML = "$" + subtotal.toFixed(2);
+
+mytax = subtotal * 0.0625;
+document.getElementById("tax").innerHTML = "$" + mytax.toFixed(2);
+
+total = subtotal + mytax;
+document.getElementById("tacototal").innerHTML = "$" + total.toFixed(2);
+}
+
+
+return false; // required to not refresh the page; just leave this here
+}
+</script>
+
+</body>
+</html>
+
+
